@@ -1,7 +1,7 @@
 module JsonErrorResponder
   extend ActiveSupport::Concern
 
-  def json_api_error_response(status, status_text, message)
+  def default_json_error_response(status, status_text, message)
     render json: {
       status: status,
       statusText: status_text,
