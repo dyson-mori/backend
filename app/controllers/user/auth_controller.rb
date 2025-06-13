@@ -1,19 +1,12 @@
 class User::AuthController < Devise::SessionsController
-  include JsonErrorResponder
-
   respond_to :json
+  skip_before_action :verify_authenticity_token, raise: false
 
   def create
-    super do |resource|
-      Rails.logger.info "Usuário logado: #{resource.email}" if resource.present?
-    end
-  end
-
-  private
-
-  def respond_with(resource, _opts = {})
-    token = request.env['warden-jwt_auth.token']
-
+    self.resource = warden.authenticate!(auth_options)
+    
+    token = Warden::JWTAuth::UserEncoder.new.call(resource, :user, nil).first
+    
     cookies["porcupine-token"] = {
       value: token,
       httpOnly: true,
@@ -23,14 +16,9 @@ class User::AuthController < Devise::SessionsController
       expires: 2.minutes.from_now
     }
 
-    if resource.persisted?
-      render json: {
-        message: 'Login realizado com sucesso!',
-        token: token,
-      }, status: :ok
-    else
-      json_api_error_response(422, "Unprocessable Entity", "Algo deu de errado ao tentar criar o usuário!")
-    end
+    render json: {
+      message: 'Login realizado com sucesso!',
+      token: token
+    }, status: :ok
   end
-
 end
