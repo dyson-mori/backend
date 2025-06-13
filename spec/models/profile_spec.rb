@@ -25,7 +25,7 @@ RSpec.describe 'GET /me', type: :request do
 
   context 'Testar rota /me sem o token' do
     it 'retorna 401 unauthorized!' do
-      get '/me' # Sem o header Authorization
+      get '/me'
 
       expect(response).to have_http_status(:unauthorized)
 
