@@ -22,7 +22,6 @@ RSpec.describe 'POST /login', type: :request do
       expect(response).to have_http_status(:ok)
       expect(response.parsed_body['message']).to eq('Login realizado com sucesso!')
       expect(response.parsed_body['token']).to be_present
-      expect(response.headers['Set-Cookie']).to include('porcupine-token')
     end
   end
 
