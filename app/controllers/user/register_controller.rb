@@ -12,7 +12,7 @@ class User::RegisterController < Devise::RegistrationsController
         message: 'Usuário registrado com sucesso!',
       }, status: :created
     else
-      json_api_error_response(422, "Unprocessable Entity", "Algo deu de errado ao tentar criar o usuário!")
+      default_json_error_response(422, "Unprocessable Entity", "Algo deu de errado ao tentar criar o usuário!")
     end
   end
 
@@ -26,7 +26,7 @@ class User::RegisterController < Devise::RegistrationsController
     if resource.persisted?
       render json: { message: 'Usuário registrado com sucesso!' }, status: :created
     else
-      json_api_error_response(422, "Unprocessable Entity", "Algo deu de errado! - respond_with")
+      default_json_error_response(422, "Unprocessable Entity", "Algo deu de errado! - respond_with")
     end
   end
 
