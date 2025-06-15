@@ -1,24 +1,35 @@
-# README
+# Teste Técnico Pleno II • Ruby on Rails 7.2
+Durante o desenvolvimento dessa aplicação, acabei criando o nome de ***Porcupine***.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### 📦 Instalando os Pacotes
+Abra o `terminal` ou `CMD` do projeto e execute `bundle install` para instalar os pacotes do projeto.
 
-Things you may want to cover:
+### 🐳 Criando os Containers no Docker
+Com o `terminal` aberto, execute `docker compose up --build`, pronto.
 
-* Ruby version
+### 🐳 Criando o Banco de Desenvolvimento | Produção | Testes
+Abra um novo `terminal` ou `CMD` do projeto e execute esses três comandos a baixo, em cada uma delas você adicionará `jwt_secret:"uma_chave_secreta"`
 
-* System dependencies
+  Desenvolvimento: `EDITOR="code --wait" rails credentials:edit --environment development`
 
-* Configuration
+  Produção: `EDITOR="code --wait" rails credentials:edit --environment production`
 
-* Database creation
+  Testes: `EDITOR="code --wait" rails credentials:edit --environment test`
 
-* Database initialization
+Em seguida execute o comando `rails db:migrate` para criar as tabelas no `🐳Docker`.
 
-* How to run the test suite
+### 🧪 Testes
+Com o Docker e o terminal do projeto aberto, execute `bundle exec rspec --format documentation`
+- [✔️] Testar criação de usuário
+- [✔️] Testar login e geração de JWT
+- [✔️] Testar rota /me com e sem token
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### ✔️ Taks
+- [✔️] Registrar o usuário e retornar um token JWT.
+- [✔️] Valida e retorna o JWT.
+- [✔️] Usar Devise com JWT.
+- [✔️] Implementar TDD com RSpec.
+- [✔️] Endpoints necessários:
+  - [✔️] POST /signup
+  - [✔️] POST /login
+  - [✔️] GET /me (requer autenticação via JWT)
