@@ -6,14 +6,13 @@ services:
       - "3333:3333"
     environment:
       RAILS_ENV: production
-      POSTGRES_HOST: db
-      POSTGRES_USER: backend_user
-      POSTGRES_PASSWORD: sq159aw753
     volumes:
       - .:/app:cached
     depends_on:
       - db
       - db_test
+    env_file:
+      - .env.development
 
   db:
     image: postgres:15
