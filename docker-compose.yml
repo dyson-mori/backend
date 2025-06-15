@@ -14,8 +14,6 @@ services:
     depends_on:
       - db
       - db_test
-    env_file:
-      - .env
 
   db:
     image: postgres:15
