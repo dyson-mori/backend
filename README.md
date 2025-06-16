@@ -1,22 +1,35 @@
 # Teste Técnico Pleno II • Ruby on Rails 7.2
-Durante o desenvolvimento desse projeto acabei criando uma documentação instalação do Ruby on Rails.
-O motivo é que eu nunca tinha usado esse framework então acabei estudando um pouco mais sobre ele e criando essa [Documentação](https://www.notion.so/Ruby-on-Rails-20291718819a80f48e19e78fb74058db?source=copy_link)
+Durante o desenvolvimento deste projeto, criei uma documentação de instalação do Ruby on Rails, já que essa foi minha primeira experiência com o framework. O processo me ajudou a entender melhor o ecossistema Rails, e você pode conferir a documentação completa neste link:
 
-### 📦 Instalando os Pacotes
-Abra o `terminal` ou `CMD` do projeto e execute `bundle install` e depois `bundle lock --add-platform x86_64-linux` para instalar os pacotes do projeto.
+🔗[Documentação](https://www.notion.so/Ruby-on-Rails-20291718819a80f48e19e78fb74058db?source=copy_link)
 
-### 📃 Criando as Variáveis
-Com o `terminal` aberto, você criará 3 arquivos executando `touch .env`, `touch .env.production` e `touch .env.db` e adicione essas variáveis a baixo.
-```shell
-# .env
+### 📦 Instalação dos Pacotes
+No `terminal` ou `CMD` do projeto, execute:
+```bash
+  bundle install
+  bundle lock --add-platform x86_64-linux
+```
+O primeiro comando instala as dependências do projeto, enquanto o segundo garante a compatibilidade com o ambiente Linux.
+
+### 📃 Configuração de Variáveis de Ambiente
+Crie os seguintes arquivos:
+
+```bash
+touch .env .env.production .env.db
+```
+
+E adicione os respectivos conteúdos:
+
+```bash
+# .env - Ambiente de Desenvolvimento
 POSTGRES_USER=backend_user
 POSTGRES_PASSWORD=sq159aw753
 POSTGRES_HOST=localhost
 POSTGRES_PORT=5432
 POSTGRES_DB=porcupine_database
 ```
-```shell
-# .env.production
+```bash
+# .env.production - Ambiente de Produção
 POSTGRES_USER=backend_user
 POSTGRES_PASSWORD=sq159aw753
 POSTGRES_HOST=db
@@ -25,16 +38,16 @@ POSTGRES_DB=porcupine_database
 RAILS_ENV=production
 DATABASE_URL=postgres://backend_user:sq159aw753@db:5432/porcupine_database
 ```
-```shell
-# .env.db
+```bash
+# .env.db - Configuração do Container PostgreSQL
 POSTGRES_USER=backend_user
 POSTGRES_PASSWORD=sq159aw753
 POSTGRES_DB=porcupine_database
 ```
 
 ### 🐳 Iniciando um Container PostgreSQL
-No seu `terminal` execute esse comando a baixo para criar um container onde ficará o seu banco para que assim você possa testar sua aplicação localmente.
-```
+Execute o comando abaixo para iniciar um container PostgreSQL local para desenvolvimento:
+``` bash
 docker run --name porcupine \
   -e POSTGRES_PASSWORD=sq159aw753 \
   -e POSTGRES_USER=backend_user \
@@ -43,28 +56,48 @@ docker run --name porcupine \
   -d postgres
 ```
 
-### 🔑 Criando as chaves de Desenvolvimento | Produção | Testes
-Em seguida no mesmo `terminal` ou `CMD` do projeto, execute esses três comandos a baixo, em cada uma delas você adicionará `jwt_secret:"uma_chave_secreta"`
+### 🔑 Gerando Credenciais de Ambiente (Rails Credentials)
+Execute os comandos abaixo para criar chaves de autenticação personalizadas para cada ambiente:
 
-  Desenvolvimento: `EDITOR="code --wait" rails credentials:edit --environment development`<br />
-  Chave Aleatória: `jwt_secret: "157-953"`
+Desenvolvimento
+```bash
+  EDITOR="code --wait" rails credentials:edit --environment development
+```
+Conteúdo sugerido:
+```bash
+  jwt_secret: "157-953-759-153-684-842-426-268"
+```
 
-  Produção: `EDITOR="code --wait" rails credentials:edit --environment production`<br />
-  Chave Aleatória: `jwt_secret: "147-963"`
+Produção
+```bash
+  EDITOR="code --wait" rails credentials:edit --environment production
+```
+Conteúdo sugerido:
+```bash
+  jwt_secret: "258-963-741-789-123-456-842-862"
+```
 
-  Testes: `EDITOR="code --wait" rails credentials:edit --environment test`<br />
-  Chave Aleatória: `jwt_secret: "456-321"`
+Testes
+```bash
+  EDITOR="code --wait" rails credentials:edit --environment test
+```
+Conteúdo sugerido:
+```bash
+  jwt_secret: "951-753-852-147-369-456-426-862"
+```
 
-### 🧪 Testes
-Com o Docker e o terminal do projeto aberto, execute `rails db:test:prepare` e em seguida `bundle exec rspec --format documentation` para ver os testes rodar.
-- [✔️] Testar criação de usuário
-- [✔️] Testar login e geração de JWT
-- [✔️] Testar rota /me com e sem token
+### 🧪 Rodando os Testes
+Com o Docker em execução, prepare o banco de dados de testes e execute os testes com os comandos:
+```bash
+rails db:test:prepare
+bundle exec rspec --format documentation
+```
 
 ### 🐳 Subindo o Projeto no Docker
-Agora execute `docker compose up --build` para criar o Container do projeto.
-
-### 📅 Modo de uso
+Para iniciar o ambiente completo, execute:
+```bash
+docker compose up --build
+```
 
 ### ✔️ Tasks
 - [✔️] Registrar o usuário e retornar um token JWT.
