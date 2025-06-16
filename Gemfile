@@ -9,7 +9,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'rack-cors'
 gem "devise", "~> 4.9"
 gem "devise-jwt", "~> 0.12.1"
-gem "rspec-rails", "~> 7.1"
+gem "rspec-rails", "~> 8.0"
 gem 'sprockets-rails'
 gem 'dotenv-rails'
 group :development, :test do
