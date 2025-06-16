@@ -6,7 +6,7 @@ Durante o desenvolvimento deste projeto, criei uma documentação de instalaçã
 ### 📦 Instalação dos Pacotes
 No `terminal` ou `CMD` do projeto, execute:
 ```bash
-  bundle install
+bundle install
 ```
 depois
 ```bash
@@ -64,29 +64,29 @@ Execute os comandos abaixo para criar chaves de autenticação personalizadas pa
 
 Desenvolvimento
 ```bash
-  EDITOR="code --wait" rails credentials:edit --environment development
+EDITOR="code --wait" rails credentials:edit --environment development
 ```
 Conteúdo sugerido:
 ```bash
-  jwt_secret: "157-953-759-153-684-842-426-268"
+jwt_secret: "157-953-759-153-684-842-426-268"
 ```
 
 Produção
 ```bash
-  EDITOR="code --wait" rails credentials:edit --environment production
+EDITOR="code --wait" rails credentials:edit --environment production
 ```
 Conteúdo sugerido:
 ```bash
-  jwt_secret: "258-963-741-789-123-456-842-862"
+jwt_secret: "258-963-741-789-123-456-842-862"
 ```
 
 Testes
 ```bash
-  EDITOR="code --wait" rails credentials:edit --environment test
+EDITOR="code --wait" rails credentials:edit --environment test
 ```
 Conteúdo sugerido:
 ```bash
-  jwt_secret: "951-753-852-147-369-456-426-862"
+jwt_secret: "951-753-852-147-369-456-426-862"
 ```
 
 ### 🧪 Rodando os Testes
