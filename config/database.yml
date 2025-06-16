@@ -11,15 +11,11 @@ default: &default
 
 development:
   <<: *default
-  database: porcupine_database_dev
+  database: porcupine_database
 
 test:
   <<: *default
-  database: <%= ENV["POSTGRES_DB"] %>
-  username: <%= ENV["POSTGRES_USER"] %>
-  password: <%= ENV["POSTGRES_PASSWORD"] %>
-  host: <%= ENV["POSTGRES_HOST"] %>
-  port: <%= ENV["POSTGRES_PORT"] %>
+  database: porcupine_database
 
 production:
   <<: *default
