@@ -6,12 +6,29 @@ O motivo é que eu nunca tinha usado esse framework então acabei estudando um p
 Abra o `terminal` ou `CMD` do projeto e execute `bundle install` e depois `bundle lock --add-platform x86_64-linux` para instalar os pacotes do projeto.
 
 ### 📃 Criando as Variáveis
-Com o `terminal` aberto, execute `touch .env` e adicione essas variáveis a baixo.
+Com o `terminal` aberto, você criará 3 arquivos executando `touch .env`, `touch .env.production` e `touch .env.db` e adicione essas variáveis a baixo.
 ```shell
+# .env
 POSTGRES_USER=backend_user
 POSTGRES_PASSWORD=sq159aw753
 POSTGRES_HOST=localhost
 POSTGRES_PORT=5432
+POSTGRES_DB=porcupine_database
+```
+```shell
+# .env.production
+POSTGRES_USER=backend_user
+POSTGRES_PASSWORD=sq159aw753
+POSTGRES_HOST=db
+POSTGRES_PORT=5432
+POSTGRES_DB=porcupine_database
+RAILS_ENV=production
+DATABASE_URL=postgres://backend_user:sq159aw753@db:5432/porcupine_database
+```
+```shell
+# .env.db
+POSTGRES_USER=backend_user
+POSTGRES_PASSWORD=sq159aw753
 POSTGRES_DB=porcupine_database
 ```
 
