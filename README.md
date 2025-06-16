@@ -7,6 +7,9 @@ Durante o desenvolvimento deste projeto, criei uma documentação de instalaçã
 No `terminal` ou `CMD` do projeto, execute:
 ```bash
   bundle install
+```
+depois
+```bash
   bundle lock --add-platform x86_64-linux
 ```
 O primeiro comando instala as dependências do projeto, enquanto o segundo garante a compatibilidade com o ambiente Linux.
@@ -90,6 +93,8 @@ Conteúdo sugerido:
 Com o Docker em execução, prepare o banco de dados de testes e execute os testes com os comandos:
 ```bash
 rails db:test:prepare
+```
+```bash
 bundle exec rspec --format documentation
 ```
 
