@@ -8,7 +8,7 @@ gem "bootsnap", require: false
 gem 'bcrypt', '~> 3.1.7'
 gem 'rack-cors'
 gem "devise", "~> 4.9"
-gem "devise-jwt", "~> 0.12.1"
+gem "devise-jwt", "~> 0.13.0"
 gem "rspec-rails", "~> 7.1"
 gem 'sprockets-rails'
 gem 'dotenv-rails'
